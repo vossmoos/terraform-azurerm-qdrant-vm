@@ -3,6 +3,8 @@ resource "azurerm_linux_virtual_machine" "qdrant" {
   resource_group_name = var.resource_group_name
   location            = var.region
   size                = var.vm_size
+
+  disable_password_authentication = false
   admin_username      = var.admin_username
   admin_password      = var.admin_password
 
