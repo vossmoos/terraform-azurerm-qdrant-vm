@@ -29,9 +29,9 @@ resource "azurerm_linux_virtual_machine" "qdrant" {
     }
 
     inline = [
-      "sudo apt update",
-      "sudo apt install -y ansible",
-      "ansible-playbook -i hosts microk8s.yml",
+      "sudo snap install microk8s --channel=stable --classic",
+      "sudo microk8s enable dns storage",
+      "sudo microk8s start"
     ]
   }
 }
