@@ -1,0 +1,21 @@
+- name: Install MicroK8s
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Add MicroK8s repo
+      apt_repository:
+        repo: deb https://download.microk8s.io stable main
+        repo_key_checks: yes
+
+    - name: Update package lists
+      apt:
+        update_cache: yes
+
+    - name: Install MicroK8s
+      apt:
+        name: microk8s
+        state: present
+
+    - name: Start MicroK8s
+      command: microk8s start

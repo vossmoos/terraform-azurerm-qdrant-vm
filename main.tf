@@ -19,4 +19,19 @@ resource "azurerm_linux_virtual_machine" "qdrant" {
     sku       = "22_04-lts"
     version   = "latest"
   }
+
+  provisioner "remote-exec" {
+    connection {
+      type     = "ssh"
+      user     = var.admin_username
+      password = var.admin_password
+      host     = azurerm_linux_virtual_machine.qdrant.public_ip_address
+    }
+
+    inline = [
+      "sudo apt update",
+      "sudo apt install -y ansible",
+      "ansible-playbook -i hosts microk8s.yml",
+    ]
+  }
 }
