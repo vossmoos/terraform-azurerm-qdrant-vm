@@ -26,8 +26,8 @@ resource "azurerm_linux_virtual_machine" "qdrant" {
     connection {
       type     = "ssh"
       user     = var.admin_username
-      password = var.admin_password
-      host     = "localhost"
+      password = var.admin_password  
+      host     = azurerm_linux_virtual_machine.qdrant.public_ip_address  # Use the VM's public IP
     }
 
     inline = [
