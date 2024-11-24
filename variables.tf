@@ -32,7 +32,7 @@ variable "admin_password" {
 variable "vm_size" {
   type = string
   description = "Machine size"
-  default = "Standard_B1ms"
+  default = "Standard_B2s"
 }
 
 variable "subscription_id" {

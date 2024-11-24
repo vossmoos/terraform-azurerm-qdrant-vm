@@ -22,18 +22,18 @@ resource "azurerm_linux_virtual_machine" "qdrant" {
     version   = "latest"
   }
 
-#   provisioner "remote-exec" {
-#     connection {
-#       type     = "ssh"
-#       user     = var.admin_username
-#       password = var.admin_password  
-#       host     = azurerm_linux_virtual_machine.qdrant.public_ip_address  # Use the VM's public IP
-#     }
+  provisioner "remote-exec" {
+    connection {
+      type     = "ssh"
+      user     = var.admin_username
+      password = var.admin_password  
+      host     = azurerm_linux_virtual_machine.qdrant.public_ip_address  # Use the VM's public IP
+    }
 
-#     inline = [
-#       "sudo snap install microk8s --channel=stable --classic",
-#       "sudo microk8s enable dns storage",
-#       "sudo microk8s start"
-#     ]
-#   }
+    inline = [
+      "sudo snap install microk8s --channel=stable --classic",
+      "sudo microk8s enable dns storage",
+      "sudo microk8s start"
+    ]
+  }
 }
