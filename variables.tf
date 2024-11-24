@@ -23,10 +23,10 @@ variable "admin_username" {
   description = "Username for the virtual machine"
 }
 
-variable "admin_password" {
+variable "public_key" {
   type = string
   sensitive = true
-  description = "Password for the virtual machine (stored securely)"
+  description = "SSH public key for the virtual machine"
 }
 
 variable "vm_size" {

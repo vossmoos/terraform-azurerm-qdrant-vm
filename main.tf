@@ -4,11 +4,14 @@ resource "azurerm_linux_virtual_machine" "qdrant" {
   location            = var.region
   size                = var.vm_size
 
-  disable_password_authentication = false
   admin_username      = var.admin_username
-  admin_password      = var.admin_password
 
   network_interface_ids = var.network_interface_ids
+
+  admin_ssh_key {
+    username   = var.admin_username
+    public_key = var.public_key
+  }
 
   os_disk {
     caching              = "ReadWrite"
